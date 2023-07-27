@@ -1,0 +1,7 @@
+.card__like-button_clicked {
+  background-image: url(../../../../images/Union.svg);
+}
+
+.card__like-button_clicked:hover {
+  opacity: 1;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>mesto</title>
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img src="./images/logo.svg" alt="логотип Место" class="header__logo" />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <div class="profile__information">
+            <img
+              src="./images/Avatar.jpg"
+              alt="Изображение аватара"
+              class="profile__avatar"
+            />
+            <div class="profile__details">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button
+                class="profile__edit-button"
+                aria-label="кнопка редактирования"
+                type="button"
+              ></button>
+              <p class="profile__occupation">Исследователь океана</p>
+            </div>
+            <button
+              class="profile__add-button"
+              aria-label="кнопка добавления"
+              type="button"
+            ></button>
+          </div>
+        </section>
+
+        <!-- popup block -->
+        <section class="popup" aria-label="всплывающее меню">
+          <div class="popup__container">
+            <button
+              class="popup__close-button"
+              aria-label="кнопка закрытия всплывающего меню"
+              type="button"
+            ></button>
+            <form class="popup__form" name="edit-form">
+              <h2 class="popup__heading">Редактировать профиль</h2>
+              <input
+                type="text"
+                value="Жак-Ив Кусто"
+                class="popup__input popup__input_name_user"
+                name="user-name"
+              />
+              <input
+                type="text"
+                value="Исследователь океана"
+                class="popup__input popup__input_name_occupation"
+                name="user-occupation"
+              />
+              <button type="submit" class="popup__submit-button">
+                Сохранить
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section class="cards" aria-label="открытки">
+          <article class="card">
+            <img
+              src="./images/image-1.png"
+              alt="Карачаевск"
+              class="card__image"
+            />
+            <div class="card__details">
+              <h2 class="card__name">Карачаевск</h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="./images/image-2.png"
+              alt="Гора Эльбрус"
+              class="card__image"
+            />
+            <div class="card__details">
+              <h2 class="card__name">
+                abcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhhabcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhhabcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhh
+              </h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+          <article class="card">
+            <img src="./images/image-3.png" alt="Домбай" class="card__image" />
+            <div class="card__details">
+              <h2 class="card__name">Домбай</h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="./images/image-2.png"
+              alt="Гора Эльбрус"
+              class="card__image"
+            />
+            <div class="card__details">
+              <h2 class="card__name">Гора Эльбрус</h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+          <article class="card">
+            <img src="./images/image-3.png" alt="Домбай" class="card__image" />
+            <div class="card__details">
+              <h2 class="card__name">Домбай</h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="./images/image-1.png"
+              alt="Карачаевск"
+              class="card__image"
+            />
+            <div class="card__details">
+              <h2 class="card__name">Карачаево-Черкесия</h2>
+              <button
+                aria-label="кнопку Мне нравится"
+                class="card__like-button"
+                type="button"
+              ></button>
+            </div>
+          </article>
+        </section>
+      </main>
+      <footer class="footer" aria-label="подвал">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>
