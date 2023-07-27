@@ -9,7 +9,8 @@
   background-repeat: no-repeat;
   background-position: center;
   padding: 14px 64px;
-  margin: 34px 0 0 242px;
+
+  margin: 34px 0 0 auto;
   cursor: pointer;
   box-sizing: border-box;
   transition: opacity 0.3s;
