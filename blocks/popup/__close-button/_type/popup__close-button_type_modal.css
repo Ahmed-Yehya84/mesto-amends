@@ -1,0 +1,10 @@
+.popup__close-button_type_modal {
+  top: -90px;
+  margin: 50px 0 8px 8px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__close-button_type_modal {
+    top: -35px;
+  }
+}

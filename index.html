@@ -36,121 +36,112 @@
             ></button>
           </div>
         </section>
-
-        <!-- popup block -->
-        <section class="popup" aria-label="всплывающее меню">
-          <div class="popup__container">
+        <!-- Add photo popup -->
+        <section
+          class="popup popup_type_add-photo"
+          aria-label="всплывающее меню для добавления фотографий"
+        >
+          <div class="popup__container popup__container_type_add-photo">
             <button
-              class="popup__close-button"
+              class="popup__close-button popup__close-button_type_add-photo"
               aria-label="кнопка закрытия всплывающего меню"
               type="button"
             ></button>
-            <form class="popup__form" name="edit-form">
-              <h2 class="popup__heading">Редактировать профиль</h2>
+            <form
+              class="popup__form popup__form_type_add-photo"
+              name="addPhoto-form"
+            >
+              <h2 class="popup__heading">Новое место</h2>
               <input
                 type="text"
-                value="Жак-Ив Кусто"
-                class="popup__input popup__input_name_user"
-                name="user-name"
+                class="popup__input popup__input_value_photo-name"
+                name="photo-name"
+                placeholder="Название"
               />
               <input
                 type="text"
-                value="Исследователь океана"
-                class="popup__input popup__input_name_occupation"
-                name="user-occupation"
+                value=""
+                class="popup__input popup__input_value_photo-link"
+                name="photo-link"
+                placeholder="Ссылка на картинку"
               />
-              <button type="submit" class="popup__submit-button">
+              <button
+                type="submit"
+                class="popup__submit-button"
+                aria-label="кнопка добавления"
+              >
                 Сохранить
               </button>
             </form>
           </div>
         </section>
 
+        <!-- popup block -->
+        <section
+          class="popup popup_type_edit-form"
+          aria-label="всплывающее меню"
+        >
+          <div class="popup__container popup__container_type_edit">
+            <button
+              class="popup__close-button popup__close-button_type_edit"
+              aria-label="кнопка закрытия всплывающего меню"
+              type="button"
+            ></button>
+            <form class="popup__form popup__form_type_edit" name="edit-form">
+              <h2 class="popup__heading">Редактировать профиль</h2>
+              <input
+                type="text"
+                class="popup__input popup__input_name_user"
+                name="user-name"
+                placeholder="имя пользователя"
+              />
+              <input
+                type="text"
+                class="popup__input popup__input_name_occupation"
+                name="user-occupation"
+                placeholder="профессия пользователя"
+              />
+              <button
+                type="submit"
+                class="popup__submit-button"
+                aria-label="кнопка отправки данных"
+              >
+                Сохранить
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- modal for image -->
+        <section class="popup popup_type_modal" aria-label="модальное меню">
+          <div class="popup__container popup__container_type_modal">
+            <button
+              aria-label="закрыть модальное меню"
+              class="popup__close-button popup__close-button_type_modal"
+            ></button>
+            <img src=" " class="popup__image" alt=" " />
+            <p class="popup__name"></p>
+          </div>
+        </section>
+        <!-- end of modal -->
+
+        <!-- cards -->
+
         <section class="cards" aria-label="открытки">
-          <article class="card">
-            <img
-              src="./images/image-1.png"
-              alt="Карачаевск"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__name">Карачаевск</h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/image-2.png"
-              alt="Гора Эльбрус"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__name">
-                abcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhhabcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhhabcdefghizfhsdsdshsdshdshdsdshdshdsdhshdshdhh
-              </h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
-          <article class="card">
-            <img src="./images/image-3.png" alt="Домбай" class="card__image" />
-            <div class="card__details">
-              <h2 class="card__name">Домбай</h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/image-2.png"
-              alt="Гора Эльбрус"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__name">Гора Эльбрус</h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
-          <article class="card">
-            <img src="./images/image-3.png" alt="Домбай" class="card__image" />
-            <div class="card__details">
-              <h2 class="card__name">Домбай</h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="./images/image-1.png"
-              alt="Карачаевск"
-              class="card__image"
-            />
-            <div class="card__details">
-              <h2 class="card__name">Карачаево-Черкесия</h2>
-              <button
-                aria-label="кнопку Мне нравится"
-                class="card__like-button"
-                type="button"
-              ></button>
-            </div>
-          </article>
+          <template id="card-box">
+            <article class="card">
+              <button class="card__delete"></button>
+              <img class="card__image" />
+              <div class="card__details">
+                <h2 class="card__name"></h2>
+                <button
+                  aria-label="кнопку Мне нравится"
+                  class="card__like-button"
+                  type="button"
+                ></button>
+              </div>
+            </article>
+          </template>
         </section>
       </main>
       <footer class="footer" aria-label="подвал">
