@@ -50,6 +50,7 @@
             <form
               class="popup__form popup__form_type_add-photo"
               name="addPhoto-form"
+              novalidate
             >
               <h2 class="popup__heading">Новое место</h2>
               <input
@@ -57,18 +58,27 @@
                 class="popup__input popup__input_value_photo-name"
                 name="photo-name"
                 placeholder="Название"
+                minlength="2"
+                max-length="30"
+                id="photo-name"
+                required
               />
+              <span class="popup__input-error" id="photo-name-error"></span>
               <input
-                type="text"
+                type="url"
                 value=""
                 class="popup__input popup__input_value_photo-link"
                 name="photo-link"
                 placeholder="Ссылка на картинку"
+                id="image-link"
+                required
               />
+              <span class="popup__input-error" id="image-link-error"></span>
               <button
                 type="submit"
                 class="popup__submit-button"
                 aria-label="кнопка добавления"
+                disabled
               >
                 Сохранить
               </button>
@@ -87,24 +97,42 @@
               aria-label="кнопка закрытия всплывающего меню"
               type="button"
             ></button>
-            <form class="popup__form popup__form_type_edit" name="edit-form">
+            <form
+              class="popup__form popup__form_type_edit"
+              name="edit-form"
+              novalidate
+            >
               <h2 class="popup__heading">Редактировать профиль</h2>
               <input
                 type="text"
                 class="popup__input popup__input_name_user"
                 name="user-name"
+                id="user-name"
                 placeholder="имя пользователя"
+                required
+                minlength="2"
+                maxlength="40"
               />
+              <span class="popup__input-error" id="user-name-error"></span>
               <input
                 type="text"
                 class="popup__input popup__input_name_occupation"
                 name="user-occupation"
+                id="user-occupation"
                 placeholder="профессия пользователя"
+                required
+                minlength="2"
+                maxlength="200"
               />
+              <span
+                class="popup__input-error"
+                id="user-occupation-error"
+              ></span>
               <button
                 type="submit"
                 class="popup__submit-button"
                 aria-label="кнопка отправки данных"
+                disabled
               >
                 Сохранить
               </button>
@@ -148,6 +176,7 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

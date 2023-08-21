@@ -37,18 +37,18 @@ const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
 const cards = document.querySelector(".cards");
 const addPhotoButton = document.querySelector(".profile__add-button");
-const card = document.querySelector(".card");
+
 const closeAddPhoto = document.querySelector(".popup__close-button");
 const photoName = document.querySelector(".popup__input_value_photo-name");
 const photoLink = document.querySelector(".popup__input_value_photo-link");
 const addPhotoForm = document.querySelector(".popup__form_type_add-photo");
-const likeBotton = document.querySelectorAll(".card__like-button");
 const inputs = document.querySelectorAll(
   ".popup__input_value_photo-name,.popup__input_value_photo-link"
 );
 
 const popupPhotoLarge = document.querySelector(".popup_type_modal");
 const popupImage = document.querySelector(".popup__image");
+
 const popupImageName = document.querySelector(".popup__name");
 const buttonCloseImagePopup = document.querySelector(
   ".popup__close-button_type_modal"
@@ -56,77 +56,84 @@ const buttonCloseImagePopup = document.querySelector(
 
 const popup = document.querySelector(".popup");
 
-editFormButton.addEventListener("click", openEditForm);
+editFormButton.addEventListener("click", handleOpenEditFormClick);
 
-closeEditPopup.addEventListener("click", closeEditForm);
+closeEditPopup.addEventListener("click", handleCloseEditFormClick);
 
-editForm.addEventListener("submit", handleEditForm);
-addPhotoButton.addEventListener("click", openAddPhotoForm);
-closeAddPhoto.addEventListener("click", closeAddPhotoForm);
-buttonCloseImagePopup.addEventListener("click", closePhotoModal);
-addPhotoForm.addEventListener("submit", handleAddPhotoForm);
+editForm.addEventListener("submit", handleEditFormSubmit);
+addPhotoButton.addEventListener("click", handleAddPhotoFormClick);
+closeAddPhoto.addEventListener("click", handleCloseAddPhotoFormClick);
+buttonCloseImagePopup.addEventListener("click", handlePhotoModalCloseClick);
+addPhotoForm.addEventListener("submit", handleAddPhotoFormSubmit);
 
+const overlayLayers = document.querySelectorAll(".popup");
 // universal functions
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  window.addEventListener("keydown", closePopupViaEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  window.removeEventListener("keydown", closePopupViaEsc, false);
 }
 
 // open edit popup
-function openEditForm() {
+function handleOpenEditFormClick() {
   nameInput.value = profileName.textContent;
   occupationInput.value = profileOccupation.textContent;
   openPopup(editPopup);
 }
 
 // close edit popup
-function closeEditForm() {
+function handleCloseEditFormClick() {
   closePopup(editPopup);
 }
 
 // open add photo popup
-function openAddPhotoForm() {
+function handleAddPhotoFormClick() {
   openPopup(addPhotoPopup);
 }
 
 // close add photo popup
-function closeAddPhotoForm() {
+function handleCloseAddPhotoFormClick() {
   closePopup(addPhotoPopup);
 }
-
-function closePhotoModal() {
+// openPhotoModal
+function handlePhotoModalOpenClick() {
+  openPopup(popupPhotoLarge);
+}
+// closePhotoModal
+function handlePhotoModalCloseClick() {
   closePopup(popupPhotoLarge);
 }
 
 // adding user Photos handler function
 
-function handleAddPhotoForm(e) {
-  e.preventDefault();
+function handleAddPhotoFormSubmit(event) {
+  // submitButton = document.querySelector(".popup__submit-button");
+  event.preventDefault();
   const name = photoName.value;
   const link = photoLink.value;
 
   renderCard(name, link);
 
   closePopup(addPhotoPopup);
-
-  inputs.forEach((input) => {
-    input.value = "";
-  });
+  addPhotoForm.reset();
+  submitButtonState(addPhotoForm);
 }
 
 // edit form handler function
 
-function handleEditForm(e) {
-  e.preventDefault();
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = occupationInput.value;
 
   closePopup(editPopup);
+  editForm.reset();
 }
 
 function createCard(cardName, cardImage) {
@@ -136,27 +143,29 @@ function createCard(cardName, cardImage) {
   cardClone.querySelector(".card__image").alt = cardName;
 
   cardClone.querySelector(".card__name").textContent = cardName;
-  closePopup(popupPhotoLarge);
-  // card like button
 
-  cardClone
-    .querySelector(".card__like-button")
-    .addEventListener("click", (e) => {
-      e.target.classList.toggle("card__like-button_clicked");
-    });
+  // card like button  делегирование событий
 
-  // card delete functionality
-  cardClone.querySelector(".card__delete").addEventListener("click", (e) => {
-    e.target.closest(".card").remove();
+  cardClone.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("card__like-button")) {
+      evt.target.classList.toggle("card__like-button_clicked");
+    }
   });
 
+  // card delete functionality
+  cardClone
+    .querySelector(".card__delete")
+    .addEventListener("click", (event) => {
+      event.target.closest(".card").remove();
+    });
+
   // image pop up
-  cardClone.querySelector(".card__image").addEventListener("click", (e) => {
-    popupImage.setAttribute("src", e.target.src);
+  cardClone.querySelector(".card__image").addEventListener("click", (event) => {
+    popupImage.setAttribute("src", event.target.src);
     popupImage.setAttribute("alt", cardName);
     popupImageName.textContent = cardName;
 
-    openPopup(popupPhotoLarge);
+    handlePhotoModalOpenClick();
   });
 
   return cardClone;
@@ -172,4 +181,22 @@ initialCards.reverse().forEach((card) => {
   const cardName = card.name;
   const cardImage = card.link;
   renderCard(cardName, cardImage);
+});
+
+function clickToCloseHandler(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+}
+
+function closePopupViaEsc(event) {
+  if (event.code === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
+}
+
+// overlayers function
+
+overlayLayers.forEach((overlay) => {
+  overlay.addEventListener("click", clickToCloseHandler);
 });
